@@ -1,1 +1,6 @@
+# Données
+
 mnist.pkl.gz
+
+# Cache Python
+__pycache__/
