@@ -30,4 +30,4 @@ def loss_rate(im_test,labs_test):
   for i in range(len(im_test)):
     l = list(computePosteriors2(im_test[i]))
     res += 1 if labels_test[i] != l.index(max(l)) else 0
-  return res/len(im_test)*100
+  return res / len(im_test) * 100
