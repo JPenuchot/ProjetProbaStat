@@ -12,6 +12,8 @@ Dans l'exercice 3, le classifieur traite chaque pixel un par un. Tous les pixels
 
 Une manière simple de vérifier cette hypothèse est donc de vérifier toutes les valeurs de la matrice de covariance : si une valeur est non nulle et n'appartient pas à la diagonale, c'est que tous les pixels ne sont pas indépendants.
 
+
+
 # Exercice 2
 
 .
