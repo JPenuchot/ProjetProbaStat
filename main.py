@@ -1,8 +1,5 @@
 # Version python3 pour le chargement des données
 import pickle, gzip, numpy as np
-import matplotlib.pyplot as plt
-import matplotlib
-
 import bayesien_naif_discret as pps
 
 # Load the dataset
