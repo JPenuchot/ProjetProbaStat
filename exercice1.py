@@ -30,3 +30,12 @@ def covVoisins(self, images):
 
   # Résultat
   return res_g, res_d
+
+def obsVoisins(self, image):
+  image_g = image.roll( 1)
+  image_d = image.roll(-1)
+
+  res_g = image * image_g
+  res_d = image * image_d
+
+  return res_g, res_d
