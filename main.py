@@ -31,10 +31,13 @@ plt.show()
 # Récupération des images et des labels
 images = train_set[0]
 images_test = test_set[0]
+
 labels = train_set[1]
 labels_test = test_set[1]
 
-print("l'erreur est de " + str(bnd.loss_rate(images_test, labels_test))+ "%"
+
+
+print("L'erreur est de " + str(bnd.loss_rate(images_test, labels_test))+ "%"
   + " sur les données de test")
 
 # Naïf discret
@@ -44,5 +47,5 @@ ims_binarize_train = np.array(bnd.binarize(images))
 ims_binarize_test = np.array(bnd.binarize(images_test))
 alpha = 0.00001
 
-print("l'erreur est de " + str(bnd.loss_rate(ims_binarize_test, labels_test)) + "%"
+print("L'erreur est de " + str(bnd.loss_rate(ims_binarize_test, labels_test)) + "%"
   + " sur les données de test")
