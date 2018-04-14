@@ -10,6 +10,23 @@ import numpy as np
       self.priors     [i] = len(images[labels == i]) / len(images)
 
 def covVoisins(self, images):
-	v_g = self.means.roll(1)
-	v_d = self.means.roll(-1)
+	# Décalage des variances pour observer les variances
+  # des pixels par rapport à leurs voisins
+  E_g = self.means.roll( 1, axis = 1)
+	E_d = self.means.roll(-1, axis = 1)
 
+  # Décalage des images pour observer les pixels
+  # par rapport à leurs voisins
+  images_g = images.roll( 1, axis = 1)
+  images_d = images.roll(-1, axis = 1)
+
+  # Produit et somme...
+  prob_xg = images.prod(images_g, axis = 1).sum(axis = 1) / images.size
+  prob_xd = images.prod(images_d, axis = 1).sum(axis = 1) / images.size
+
+  # Calcul des covariances aux voisins...
+  res_g = prob_xg - (E * E_g)
+  res_d = prob_xd - (E * E_d)
+
+  # Résultat
+  return res_g, res_d
