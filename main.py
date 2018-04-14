@@ -12,7 +12,7 @@ u.encoding = 'latin1'
 p = u.load()
 train_set, valid_set, test_set = p
 
-# Bayesien.py
+# Bayesien
 
 # Récupération des images et des labels
 images      = train_set[0]
@@ -29,11 +29,10 @@ print("L'erreur est de "
 
 # Naïf discret
 
-
 ims_binarize_train  = np.array(pps.binarize(images))
 ims_binarize_test   = np.array(pps.binarize(images_test))
 
-class_dis = pps.bn(10, ims_binarize_train, labels)
+class_dis = pps.bn(10, images, labels)
 
 alpha = 0.00001
 

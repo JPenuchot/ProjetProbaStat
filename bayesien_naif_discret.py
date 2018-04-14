@@ -19,15 +19,13 @@ class bn:
   means = {}
   variances = {}
   priors = {}
-  sum_y = {}
 
   def __init__(self, nm_classes, images, labels):
     self.nm_classes = nm_classes
 
-    for i in range(nm_classes):
-      subtrain            = images[labels==i]
+    for i in range(self.nm_classes):
+      subtrain            = images[labels == i]
 
-      self.sum_y      [i] = subtrain.sum(axis=1)
       self.means      [i] = subtrain.mean(axis=0)
       self.variances  [i] = subtrain.var(axis=0)
       self.priors     [i] = len(images[labels == i]) / len(images)
@@ -57,52 +55,4 @@ class bn:
       l = list(self.computePosteriors2(im_test[i]))
       res += 1 if labs_test[i] != l.index(max(l)) else 0
 
-    return res / len(im_test) * 100
-
-'''
-## Bayesien naïf discret
-class bnd:
-  nm_classes = 0
-  means = {}
-  variances = {}
-  priors = {}
-  sum_y = {}
-
-  def __init__(self, nm_classes, images, labels):
-    # Binarisation
-    images = np.array(binarize(images))
-
-    self.nm_classes = nm_classes
-
-    for i in range(self.nm_classes):
-      subtrain            = images[labels==i]
-      self.sum_y      [i] = subtrain.sum(axis = 1)
-      self.means      [i] = subtrain.mean(axis=0)
-      self.variances  [i] = subtrain.var(axis=0)
-      self.priors     [i] = len(images[labels == i]) / len(images)
-
-  def computePosteriors2(self, image):
-    posteriors = np.zeros([self.nm_classes, 1])
-
-    for lbl in range(self.nm_classes):
-      mean      = self.means[lbl]
-      sigma2    = self.variances[lbl]
-      non_null  = sigma2 != 0
-      scale     =   0.5 * np.log(2 * sigma2[non_null] * math.pi)
-      expterm   = - 0.5 * np.divide( np.square(image[non_null] - mean[non_null])
-                                   , sigma2[non_null] )
-      llh       = (expterm - scale).sum()
-      post      = llh + np.log(self.priors[lbl])
-      posteriors[lbl] = post
-    return posteriors
-
-  def loss_rate(self, im_test, labs_test):
-    im_test = np.array(binarize(im_test))
-    res     = 0
-
-    for i in range(len(im_test)):
-      l = list(self.computePosteriors2(im_test[i]))
-      res += 1 if labs_test[i] != l.index(max(l)) else 0
-
-    return res / len(im_test) * 100
-'''
+    return float(res) / len(im_test) * 100
