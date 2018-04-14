@@ -1,8 +1,10 @@
 # Probabilités - Statistiques : Rapport
 
-BIARD David
-PICAN Gaëtan
-PENUCHOT Jules
+Groupe :
+
+- BIARD David
+- PENUCHOT Jules
+- PICAN Gaëtan
 
 # Exercice 1
 

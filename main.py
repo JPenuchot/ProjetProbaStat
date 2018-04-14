@@ -3,6 +3,8 @@ import pickle, gzip, numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
 
+import bayesien_naif_discret as bnd
+
 # Load the dataset
 f = gzip.open('./mnist.pkl.gz', 'rb')
 u = pickle._Unpickler(f)
@@ -32,31 +34,15 @@ images_test = test_set[0]
 labels = train_set[1]
 labels_test = test_set[1]
 
-# Correction professeur
-means = {}
-variances = {}
-priors = {}
-sum_y = {}
-
-for i in range(0, 10):
-  subtrain = images[labels==i]
-  sum_y[i] = subtrain.sum(axis = 1)
-  print(sum_y)
-  mean = subtrain.mean(axis=0)
-  means[i] = mean
-  var = subtrain.var(axis=0)
-  variances[i] = var
-  priors[i] = len(images[labels == i])/len(images)
-
-print("l'erreur est de " + str(loss_rate(images_test, labels_test))+ "%"
+print("l'erreur est de " + str(bnd.loss_rate(images_test, labels_test))+ "%"
   + " sur les données de test")
 
 # Naïf discret
 
 print(len(images))
-ims_binarize_train = np.array(binarize(images))
-ims_binarize_test = np.array(binarize(images_test))
+ims_binarize_train = np.array(bnd.binarize(images))
+ims_binarize_test = np.array(bnd.binarize(images_test))
 alpha = 0.00001
 
-print("l'erreur est de " + str(loss_rate(ims_binarize_test, labels_test)) + "%"
+print("l'erreur est de " + str(bnd.loss_rate(ims_binarize_test, labels_test)) + "%"
   + " sur les données de test")
