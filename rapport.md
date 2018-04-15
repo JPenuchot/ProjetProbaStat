@@ -12,6 +12,8 @@ Les exercices sont déclinés dans les sources `ex_*.py`. Le code du classifieur
 
 `covvoisins.py` contient le code permettant de considérer l'observation des pixels par rapport à leurs voisins dans le modèle (exercice 1). Les fonctions sont appelées dans `ex_3_1.py` qui permet d'observer les résultats des différentes implémentations du classifieur.
 
+`observations_ex_1.py` permet d'effectuer les observations mentionnées dans l'exercice 1.
+
 Nous ne sommes parvenus qu'à explorer l'exercice 2 par manque de temps (ndlr : d'organisation).
 
 ## Exercice 1
