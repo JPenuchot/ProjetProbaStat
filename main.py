@@ -28,7 +28,7 @@ class_con = pps.bn(10, images, labels)
 
 print("L'erreur est de "
   + str(class_con.loss_rate(images_test, labels_test)) + "%"
-  + " sur les " + str(len(images)) + " données de test")
+  + " sur les " + " données de test")
 
 ## Naïf discret
 
@@ -40,8 +40,6 @@ ims_binarize_train  = np.array(pps.binarize(images))
 ims_binarize_test   = np.array(pps.binarize(images_test))
 
 class_dis = pps.bn(10, images, labels)
-
-alpha = 0.00001
 
 print("L'erreur est de "
   + str(class_dis.loss_rate(ims_binarize_test, labels_test)) + "%"
@@ -69,4 +67,6 @@ for i in range(class_dis.nm_classes):
 # Ajout des produits avec les voisins et ajout au jeu de données
 cv_test = np.array([cvv.obsVoisins(i) for i in ims_binarize_test])
 
-print(class_dis.loss_rate(cv_test, labels_test))
+print("L'erreur est de " 
+	+ str(class_dis.loss_rate(cv_test, labels_test)) + "%"
+	+ " sur les données de test")
