@@ -1,10 +1,6 @@
 import pickle, gzip, numpy as np
 import matplotlib.pyplot as plt
 
-# Import des fonctions covVoisins etc.
-import bayesien_naif_discret as pps
-import covvoisins as cvv
-
 # Load the dataset
 f = gzip.open('./mnist.pkl.gz', 'rb')
 u = pickle._Unpickler(f)
