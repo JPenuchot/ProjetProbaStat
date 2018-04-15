@@ -1,7 +1,7 @@
 import pickle, gzip, numpy as np
 
 # Import des fonctions covVoisins etc.
-import bayesien_naif_discret as pps
+import bayesien_naif as pps
 import covvoisins as cvv
 
 # Load the dataset
