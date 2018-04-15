@@ -47,7 +47,7 @@ print("L'erreur est de "
 
 ## Multinomial Bayesian Naive avec constante de lissage
 print()
-print("# Mutinomial Naïf avec lissage : ici alpha = 0.001 (sklearn)")
+print("# Mutinomial Bayésien Naïf avec lissage : ici alpha = 0.001 (sklearn)")
 print()
 
 from sklearn.naive_bayes import MultinomialNB
