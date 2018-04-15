@@ -87,6 +87,6 @@ for i in range(class_dis.nm_classes):
 # Ajout des produits avec les voisins et ajout au jeu de données
 cv_test = np.array([cvv.obsVoisins(i) for i in ims_binarize_test])
 
-print("L'erreur est de " 
-	+ str(class_dis.loss_rate(cv_test, labels_test)) + "%"
-	+ " sur les données de test")
+print("L'erreur est de "
+  + str(class_dis.loss_rate(cv_test, labels_test)) + "%"
+  + " sur les données de test")
