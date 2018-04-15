@@ -9,33 +9,33 @@ import numpy as np
       self.variances  [i] = subtrain.var(axis=0)
       self.priors     [i] = len(images[labels == i]) / len(images)
 
-def covVoisins(self, images):
-	# Décalage des variances pour observer les variances
-  # des pixels par rapport à leurs voisins
-  E_g = self.means.roll( 1, axis = 1)
-	E_d = self.means.roll(-1, axis = 1)
-
+def covVoisins(self, subtrain, means):
   # Décalage des images pour observer les pixels
   # par rapport à leurs voisins
-  images_g = images.roll( 1, axis = 1)
-  images_d = images.roll(-1, axis = 1)
+  subtrain_g = subtrain.roll( 1, axis = 1)
+  subtrain_d = subtrain.roll(-1, axis = 1)
 
   # Produit et somme...
-  prob_xg = images.prod(images_g, axis = 1).sum(axis = 1) / images.size
-  prob_xd = images.prod(images_d, axis = 1).sum(axis = 1) / images.size
+  prob_xg = np.multiply(subtrain, subtrain_g).sum(axis = 0) / subtrain.size
+  prob_xd = np.multiply(subtrain, subtrain_d).sum(axis = 0) / subtrain.size
+
+  # Décalage des variances pour observer les variances
+  # des pixels par rapport à leurs voisins
+  E_g = self.means.roll( 1, axis = 1)
+  E_d = self.means.roll(-1, axis = 1)
 
   # Calcul des covariances aux voisins...
   res_g = prob_xg - (E * E_g)
   res_d = prob_xd - (E * E_d)
 
   # Résultat
-  return res_g, res_d
+  return np.concatenate((res_g, res_d))
 
-def obsVoisins(self, image):
+def obsVoisins_image(self, image):
   image_g = image.roll( 1)
   image_d = image.roll(-1)
 
   res_g = image * image_g
   res_d = image * image_d
 
-  return res_g, res_d
+  return np.concatenate((res_g, res_d))
