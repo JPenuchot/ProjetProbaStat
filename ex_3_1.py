@@ -1,4 +1,5 @@
 import pickle, gzip, numpy as np
+import matplotlib.pyplot as plt
 
 # Import des fonctions covVoisins etc.
 import bayesien_naif as pps
@@ -59,7 +60,7 @@ def error_rate(images_test, labels_test):
     for i in range(len(images_test)):
         if (clf.predict(images_test[i:i+1]) != np.array([labels_test[i]])):
             res += 1
-    return res/len(images_test)*100
+    return res/len(images_test) * 100
 
 print("L'erreur est de "
   + str(error_rate(ims_binarize_test, labels_test)) + "%"

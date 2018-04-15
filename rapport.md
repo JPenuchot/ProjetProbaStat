@@ -16,9 +16,19 @@ Nous ne sommes parvenus qu'à explorer l'exercice 2 par manque de temps (ndlr : 
 
 ## Exercice 1
 
-Dans l'exercice 3, le classifieur traite chaque pixel un par un. Tous les pixels sont donc considérés comme indépendants. Cela implique que si l'hypothèse est vérifiée, les valeurs de la matrice de covariance devraient etre nulles exepté au niveau de la diagonale où les valeurs devraient être les variances de chaque pixel.
+Dans l'exercice 3 on considère les variables comme indépendantes. Si cette hypothèse est vraie alors les covariances devraient être identiques d'une classe à l'autre.
 
-Une manière simple de vérifier cette hypothèse est donc de vérifier toutes les valeurs de la matrice de covariance : si une valeur est non nulle et n'appartient pas à la diagonale, c'est que tous les pixels ne sont pas indépendants.
+Pour vérifier cette hypothèse, il suffit d'afficher les covariances de plusieurs classes pour vérifier qu'elles soient identiques.
+
+Or, on observe qu'elles ne le sont pas et pourraient nous permettre de mieux classer nos images.
+
+On peut donc se demander également si les activations relatives entre les voisins pourraient nous permettre de nous aider à classer nos images.
+
+Pour ce faire il suffit d'afficher les covariances entre voisins d'une classe à l'autre et observer une fois de plus les résultats.
+
+Une telle observation nous permet de faire une observation ciblée sur les bordures des chiffres, qui dans notre cas n'a permis de gagner qu'environ 0.15% sur le pourcentage d'erreur (voir `ex_3_1.py`).
+
+Cette observation peut paraître logique puisque les voisins sont par principe relativement dépendants les uns des autres dans les zones où les pixels sont activés, ce qui ne nous renseigne pas beaucoup plus sur l'image.
 
 ## Exercice 2
 
