@@ -5,3 +5,7 @@ mnist.pkl.gz
 # Cache Python
 
 __pycache__/
+
+# Fichier de tests
+
+sandbox.py
