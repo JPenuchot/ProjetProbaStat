@@ -15,10 +15,10 @@ def binarize(im_test):
 
 ## Bayesien naïf
 class bn:
-  nm_classes = 0
-  means = {}
-  variances = {}
-  priors = {}
+  nm_classes  = 0
+  means       = {}
+  variances   = {}
+  priors      = {}
 
   def __init__(self, nm_classes, images, labels):
     self.nm_classes = nm_classes
