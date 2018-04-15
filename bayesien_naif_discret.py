@@ -36,7 +36,7 @@ class bn:
     for lbl in range(self.nm_classes):
       mean      = self.means[lbl]
       sigma2    = self.variances[lbl]
-      non_null  = sigma2 != 0
+      non_null  = sigma2 > 0
 
       scale     =   0.5 * np.log(2 * sigma2[non_null] * math.pi)
 

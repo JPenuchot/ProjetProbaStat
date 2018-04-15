@@ -55,7 +55,7 @@ print()
 
 for i in range(class_dis.nm_classes):
   # Récupération des sous-ensembles d'images et moyennes par classe
-  subtrain = images[labels == i]
+  subtrain = ims_binarize_train[labels == i]
 
   # Calcul des covariances des voisins et ajout aux covariances du modèle
   class_dis.variances[i] =  cvv.covVoisins(
@@ -70,4 +70,4 @@ for i in range(class_dis.nm_classes):
 cv_train  = np.array([cvv.obsVoisins(i) for i in ims_binarize_train])
 cv_test   = np.array([cvv.obsVoisins(i) for i in ims_binarize_test])
 
-class_dis.loss_rate(cv_test, labels_test)
+print(class_dis.loss_rate(cv_test, labels_test))

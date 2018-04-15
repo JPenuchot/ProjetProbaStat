@@ -1,6 +1,6 @@
 import numpy as np
 
-def covVoisins(subtrain, means, cov):
+def covVoisins(subtrain, means, var):
   # Décalage des images pour observer les pixels
   # par rapport à leurs voisins
   subtrain_g = np.roll(subtrain,  1, axis = 1)
@@ -20,7 +20,7 @@ def covVoisins(subtrain, means, cov):
   res_d = prob_xd - (means * E_d)
 
   # Résultat
-  return np.concatenate((cov, res_g, res_d))
+  return np.concatenate((var, np.abs(res_g), np.abs(res_d)))
 
 def obsVoisins(image):
   image_g = np.roll(image,  1)
