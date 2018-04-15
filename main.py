@@ -45,6 +45,26 @@ print("L'erreur est de "
   + str(class_dis.loss_rate(ims_binarize_test, labels_test)) + "%"
   + " sur les données de test")
 
+## Multinomial Bayesian Naive avec constante de lissage
+print()
+print("# Mutinomial Naïf avec lissage : ici alpha = 0.001 (sklearn)")
+print()
+
+from sklearn.naive_bayes import MultinomialNB
+clf = MultinomialNB(alpha = 0.001)
+clf.fit(ims_binarize_train, labels)
+
+def error_rate(images_test, labels_test):
+    res = 0
+    for i in range(len(images_test)):
+        if (clf.predict(images_test[i:i+1]) != np.array([labels_test[i]])):
+            res += 1
+    return res/len(images_test)*100
+
+print("L'erreur est de "
+  + str(error_rate(ims_binarize_test, labels_test)) + "%"
+  + " sur les " + " données de test")
+
 ## Avec covariances
 
 print()

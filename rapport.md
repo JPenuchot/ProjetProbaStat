@@ -14,7 +14,8 @@ Une manière simple de vérifier cette hypothèse est donc de vérifier toutes l
 
 # Exercice 2
 
-.
+Ici on repart du classifieur Bayésien Naïf Gaussien appliqué aux images MNIST. Ce classifieur implémenté dans l'exercice 3 considère la réalisation d'un pixel conditionnellement à une classe comme une variable aléatoire gaussienne.
+Une première analyse que l'on peut effectuer est de regarder, à partir d'un pixel possédant une forte variance, la répartition des valeurs de ce pixel sur toutes nos images. Si l'on représente la répartition de ces valeurs à l'aide d'un histogramme, on peut facilement se rendre compte qu'une courbe représentative telle qu'une gaussienne n'est en fait pas vraiment appropriée pour considérer cette répartition. En effet, l'hypothèse d'assimiler cela à une gaussienne à tendance à fausser la représentation que nous nous étions faite des données. Une meilleur approche serait de "combiner ou mélanger" deux gaussienne. Il faudrait donc considérer que la valeur d'un pixel conditiellement à sa classe soit une variable aléatoire dont la distribution est donnée par le mélange de 2 gaussiennes.
 
 # Exercice 3
 

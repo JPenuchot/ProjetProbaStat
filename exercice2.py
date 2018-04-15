@@ -12,6 +12,7 @@ train_set, valid_set, test_set = p
 images = train_set[0]
 images_test = test_set[0]
 labels = train_set[1]
+labels_test = test_set[1]
 #Correction professeur
 
 means = np.zeros((10,784))
@@ -29,15 +30,15 @@ for i in range(0, 10):
 
 tresh = 0.189
 cpt = 0
-pixels = []
-for p in variances[5]:
-	if (cpt < 5 and p > tresh):
-		pixels.append(p)
-		cpt += 1
+index = []
 
-print(pixels)
+ind_pixels = np.argsort(variances[4])
+best_pixels_var = ind_pixels[-5:]
+print(best_pixels_var[0])
+rep_pixels = {}
+for i in range(5):
+	rep_pixels[i] = np.array([im[best_pixels_var[i]] for im in images])
 
-plt.hist(pixels, 50, normed = 1, facecolor='g', alpha = 0.75)
-plt.axis([1, 5, 0, 0.3])
-
+histo = np.histogram(rep_pixels[0], bins='auto')
+plt.hist(np.histogram(rep_pixels[0]), bins=len(rep_pixels[0]))
 plt.show()
