@@ -6,13 +6,21 @@ Groupe :
 - PENUCHOT Jules
 - PICAN Gaëtan
 
-# Exercice 1
+## README.txt
+
+Les exercices sont déclinés dans les sources `ex_*.py`. Le code du classifieur Bayesien naïf est dans `bayesien_naif.py`, il a été encapsulé dans une classe pour pouvoir l'utiliser comme un objet générique.
+
+`covvoisins.py` contient le code permettant de considérer l'observation des pixels par rapport à leurs voisins dans le modèle (exercice 1). Les fonctions sont appelées dans `ex_3_1.py` qui permet d'observer les résultats des différentes implémentations du classifieur.
+
+Nous ne sommes parvenus qu'à explorer l'exercice 2 par manque de temps (ndlr : d'organisation).
+
+## Exercice 1
 
 Dans l'exercice 3, le classifieur traite chaque pixel un par un. Tous les pixels sont donc considérés comme indépendants. Cela implique que si l'hypothèse est vérifiée, les valeurs de la matrice de covariance devraient etre nulles exepté au niveau de la diagonale où les valeurs devraient être les variances de chaque pixel.
 
 Une manière simple de vérifier cette hypothèse est donc de vérifier toutes les valeurs de la matrice de covariance : si une valeur est non nulle et n'appartient pas à la diagonale, c'est que tous les pixels ne sont pas indépendants.
 
-# Exercice 2
+## Exercice 2
 
 Ici on repart du classifieur Bayésien Naïf Gaussien appliqué aux images MNIST. Ce classifieur implémenté dans l'exercice 3 considère la réalisation d'un pixel conditionnellement à une classe comme une variable aléatoire gaussienne.
 
@@ -20,7 +28,7 @@ Une première analyse que l'on peut effectuer est de regarder, à partir d'un pi
 
 Une meilleur approche serait de "combiner ou mélanger" deux gaussiennes. Il faudrait donc considérer que la valeur d'un pixel conditiellement à sa classe soit une variable aléatoire dont la distribution est donnée par le mélange de deux gaussiennes.
 
-# Exercice 3
+## Exercice 3
 
 Dans cette exercice, le but est d'obtenir un classifieur naïf bayésien gaussien capable de prédire la classe des images fournies en entré. Dans un premier temps on implémente une version basée sur des images dont les composantes sont représentées par des valeurs réelles. Pour la phase de prédiction on utilise la formule de bayèse afin d'obtenir la probabilité pour chaque image d'appartenir aux 10 classes possible. La probabilité maximum étant choisie. Avec cette méthode on obtient donc un taux de précision d'environ 77 %.
 
