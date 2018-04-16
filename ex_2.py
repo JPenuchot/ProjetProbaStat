@@ -21,13 +21,13 @@ classe5 = images[labels == 5]
 variances = np.var(classe5, axis = 0)
 max_ids   = np.argsort(variances)
 
-'''
+
 for i in max_ids[-5:]:
   # Afficher l'histogramme du pixel de rang i
   val_px = np.array([img[i] for img in classe5])
   plt.hist(np.histogram(val_px, bins=np.arange(np.argmax(val_px))))
   plt.show()
-'''
+
 
 classifieur = mg.mg(images, labels)
 classifieur.contribImages(images, 0, 0)

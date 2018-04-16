@@ -50,7 +50,7 @@ print("L'erreur est de "
 ## Multinomial Bayesian Naive avec constante de lissage
 
 print()
-print("# Mutinomial Bayésien Naïf avec lissage : ici alpha = 0.1")
+print("# Mutinomial Bayésien Naïf avec lissage : ici alpha = 0.00001")
 print()
 
 clf = mbn.MultinomialBN(images, labels, images_test, labels_test, alpha = 0.00001)
