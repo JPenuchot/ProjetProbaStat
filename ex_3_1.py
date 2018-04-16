@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 # Import des fonctions covVoisins etc.
 import bayesien_naif as pps
 import covvoisins as cvv
+import MultinomialBN as mbn
 
 # Load the dataset
 f = gzip.open('./mnist.pkl.gz', 'rb')
@@ -12,7 +13,7 @@ u.encoding = 'latin1'
 p = u.load()
 train_set, valid_set, test_set = p
 
-## Bayesien
+# Bayesien
 
 print()
 print("# Naïf continu (exercice 3) :")
@@ -47,6 +48,18 @@ print("L'erreur est de "
   + " sur les données de test")
 
 ## Multinomial Bayesian Naive avec constante de lissage
+
+print()
+print("# Mutinomial Bayésien Naïf avec lissage : ici alpha = 0.1")
+print()
+
+clf = mbn.MultinomialBN(images, labels, images_test, labels_test, alpha = 0.00001)
+
+print("L'erreur est de "
+  + str(clf.error_rate()) + "%"
+  + " sur les données de test")
+
+## Multinomial Bayesian Naive avec constante de lissage (avec sklearn)
 print()
 print("# Mutinomial Bayésien Naïf avec lissage : ici alpha = 0.001 (sklearn)")
 print()
