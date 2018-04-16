@@ -10,11 +10,13 @@ Groupe :
 
 Les exercices sont déclinés dans les sources `ex_*.py`. Le code du classifieur Bayesien naïf est dans `bayesien_naif.py`, il a été encapsulé dans une classe pour pouvoir l'utiliser comme un objet générique.
 
+`MultinomialBN.py` contient le code du Bayesien avec implémentation du lissage.
+
 `covvoisins.py` contient le code permettant de considérer l'observation des pixels par rapport à leurs voisins dans le modèle (exercice 1). Les fonctions sont appelées dans `ex_3_1.py` qui permet d'observer les résultats des différentes implémentations du classifieur.
 
 `observations_ex_1.py` permet d'effectuer les observations mentionnées dans l'exercice 1.
 
-Nous ne sommes parvenus qu'à explorer l'exercice 2 par manque de temps (ndlr : d'organisation).
+Nous ne sommes parvenus qu'à un début d'implémentation pour l'exercice 2 par manque de temps (ndlr: d'organisation).
 
 ## Exercice 1
 
@@ -89,7 +91,7 @@ La probabilité maximum étant choisie. Avec cette méthode on obtient donc un t
 
 Pour la seconde approche on binarise les images afin que celles-ci soient représentées par des composantes binaires. Les résultats obtenus grâce à cette méthode sont relativement meilleurs avec un taux de précision d'environ 79 %.
 
-Enfin, il est possible d'effecteur une approche légèrement différentes avec un modèle bayesien naïf binomial. Les formules d'estimation et d'inférences sont légèrement différentes : 
+Enfin, il est possible d'effecteur une approche légèrement différentes avec un modèle bayesien naïf binomial. Les formules d'estimation et d'inférences sont légèrement différentes :
 
 ![estimation](./estimation_MNB.png).
 
