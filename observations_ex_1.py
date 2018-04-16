@@ -20,11 +20,11 @@ labels      = train_set[1]
 labels_test = test_set[1]
 
 print()
-print("# Observation des covariances des pixels de la classe 8:")
+print("# Observation des covariances des pixels de la classe 5:")
 print()
 
-class8 = images[labels == 8]
-plt.imshow(np.cov(class8, rowvar = False))
+class5 = images[labels == 5]
+plt.imshow(np.cov(class5, rowvar = False))
 plt.show()
 
 print()
@@ -36,12 +36,12 @@ plt.imshow(np.cov(class9, rowvar = False))
 plt.show()
 
 print()
-print("# Observation des covariances entre voisins de la classe 8:")
+print("# Observation des covariances entre voisins de la classe 5:")
 print()
 
 # On entraîne un modèle par flemme de refaire toutes les moyennes etc
 class_con = pps.bn(10, images, labels)
-var_voisins = cvv.covVoisins(class8, class_con.means[8], class_con.variances[8])
+var_voisins = cvv.covVoisins(class5, class_con.means[5], class_con.variances[5])
 
 # var_voisins contient dans l'ordre :
 #
