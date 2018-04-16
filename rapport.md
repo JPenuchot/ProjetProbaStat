@@ -40,6 +40,45 @@ Une première analyse que l'on peut effectuer est de regarder, à partir d'un pi
 
 Une meilleur approche serait de "combiner ou mélanger" deux gaussiennes. Il faudrait donc considérer que la valeur d'un pixel conditiellement à sa classe soit une variable aléatoire dont la distribution est donnée par le mélange de deux gaussiennes.
 
+Nous avons donc programmé un début d'implémentation de l'algorithme EM détaillé en cours dont le principe est assez simple :
+
+```
+- Initialiser des poids au hasard pour les deux gaussiennes (avec somme égale à 1 pour les poids)
+
+- Evaluer les paramètres de la première gaussienne
+- Evaluer les paramètres de la deuxième gaussienne
+
+// Une fois les deux gaussiennes intialisées il suffit de passer
+// à la phase itérative qui consiste à évaluer les poids des gaussiennes
+// et ajuster les paramètres des gaussiennes jusqu'à trouver des valeurs
+// (à peu près) stables
+
+change := faux
+
+while(!change)
+{
+  change := false
+  for c in classes
+  {
+    a0, a1 = alpha0[c], alpha1[c]
+
+    alpha0[c] := contrib(sousEnsemble[c], gaussienne0[c])
+    alpha1[c] := 1. - alpha0[c]
+
+    //  Si les alpha ont changé
+    if(alpha0[c], alpha1[c] != a0, a1) change := true
+
+    g0, g1 = gaussienne0[c], gaussienne1[c]
+
+    gaussienne0[c] = evalParams(sousEnsemble[c], gaussienne0[c])
+    gaussienne1[c] = evalParams(sousEnsemble[c], gaussienne1[c])
+
+    //  Si les gaussiennes ont changé
+    if(g0, g1 != gaussienne0[c], gaussienne1[c]) change := true
+  }
+}
+```
+
 ## Exercice 3
 
 Dans cette exercice, le but est d'obtenir un classifieur naïf bayésien gaussien capable de prédire la classe des images fournies en entré. Dans un premier temps on implémente une version basée sur des images dont les composantes sont représentées par des valeurs réelles. Pour la phase de prédiction on utilise la formule de bayèse afin d'obtenir la probabilité pour chaque image d'appartenir aux 10 classes possible.
